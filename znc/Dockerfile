@@ -2,13 +2,11 @@ FROM alpine:3.3
 
 RUN adduser -S znc && addgroup -S znc
 
-RUN mkdir -p /home/znc/src /home/znc/build
-WORKDIR /home/znc/build
-ADD . /home/znc/src
+ENV CONFIGUREFLAGS="--enable-python"
+ENV CLEANCMD="apk del build-dependencies && rm -Rf /src*"
+ENV MAKEFLAGS=""
 
-ARG CONFIGUREFLAGS="--enable-perl --enable-python 3.5"
-ARG CLEANCMD="apk del build-dependencies && rm -Rf /home/znc/build /home/znc/src"
-ARG MAKEFLAGS=""
+ENV ZNC_VERSION 1.6.3
 
 RUN apk add --no-cache --virtual runtime-dependencies \
         icu \
@@ -29,16 +27,23 @@ RUN apk add --no-cache --virtual build-dependencies \
         python3-dev \
         swig \
         gettext-dev \
-        boost-dev \
-    && /home/znc/src/configure.sh $CONFIGUREFLAGS \
-    && make $MAKEFLAGS \
+        boost-dev
+
+RUN mkdir /src && cd /src && wget "http://znc.in/releases/archive/znc-${ZNC_VERSION}.tar.gz" \
+    && tar -zxf "znc-${ZNC_VERSION}.tar.gz" \
+    && cd "znc-${ZNC_VERSION}" \
+    && ./configure ${CONFIGUREFLAGS} \
+    && make ${MAKEFLAGS} \
     && make install \
-    && sh -c "$CLEANCMD"
+    && sh -c "${CLEANCMD}"
+
 
 USER znc
-WORKDIR /home/znc
-VOLUME /home/znc/data
+COPY docker-entrypoint.sh /entrypoint.sh
+
+VOLUME /znc-data
 
 EXPOSE 6667
 
-ENTRYPOINT ["/usr/local/bin/znc", "-f", "-d", "/home/znc/data"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD [""]
