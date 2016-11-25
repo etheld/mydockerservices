@@ -5,6 +5,16 @@ env:
     - secure: "iI02nVjNhuykQBaFx8yswHa2Ur4MuKp08rH4dpy2qtq/jdI/cq3u46E63cj0KVF/tVaQMOOgtJmBQMV66tjFxyTOeVDORouRlwwatRo1TLfUiK6Egkra4r0yLkc4HPUNTVqDAAqSojQRqoc94k+Q2CH4lR5RgsANpMcTRYO/++q0Z1k38qnqf8l6aSu/TPmMIZbHI2oEPaA/meg81aybck13xjVNZO2kJv0yltPWpWUoXhsFe31SvAvtr7CTKd0Of6DNp4OlVEwzead+rS4NpDwBoVEX//aF9dVXgcdHICNe5eeRVxuqFKbs+o4mpvYqsYrRy9f15sdrPdUutplfMMvrIHuEvAEg1c2qtOQk6MmBoYE70FN8EmMcYIUP8LZTmjLUtEA0s6Z5RWlQ9fwlCJHYeHpJnf0dk1XkgLK0WGLi4iTgcQXaJ0E4CFEwbLnB6c7ADmD1cg8sB9tVAEcZksiwCoGxJ7C+Detx0mxaqNYF2iJ51Tl8EogFlcphrG8Gs0RA39ebcoo2eqALIJ6V7cakCawuj5X1U7X8/NifzqZajo5S9v1xTn823VpT0warSG7C7hdfNBwjnWIO7o8gDun1ivIWPqSD/PhF6toiZHLpIiotALobaXYk8x2ArsqqieOW7isBMLoSEVUsCYLQ7B5LD+7GXyfVsk34BySRSQo=" # docker email
     - COMMIT=${TRAVIS_COMMIT::8}
 
+sudo: required
+
+services:
+  - docker
+
+os:
+- linux
+
+git:
+  depth: 150
 
 after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
