@@ -16,6 +16,9 @@ os:
 git:
   depth: 150
 
+install:
+  - docker build -t znc znc/
+
 after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
   - export REPO=sebestblog/travis-demo
