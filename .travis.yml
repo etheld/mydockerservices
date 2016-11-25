@@ -16,7 +16,7 @@ os:
 git:
   depth: 150
 
-install:
+script:
   - docker build -t znc znc/
 
 after_success:
