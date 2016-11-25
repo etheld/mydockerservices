@@ -39,11 +39,9 @@ RUN mkdir /src && cd /src && wget "http://znc.in/releases/archive/znc-${ZNC_VERS
 
 
 USER znc
-COPY docker-entrypoint.sh /entrypoint.sh
 
 VOLUME /znc-data
 
 EXPOSE 6667
 
-ENTRYPOINT ["/entrypoint.sh"]
-CMD [""]
+ENTRYPOINT ["/usr/local/bin/znc", "-f", "-d", "/znc-data"]
