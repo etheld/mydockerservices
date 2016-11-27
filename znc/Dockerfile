@@ -29,6 +29,8 @@ RUN apk add --no-cache --virtual build-dependencies \
         gettext-dev \
         boost-dev
 
+RUN apk add --no-cache py-requests
+
 RUN mkdir /src && cd /src && wget "http://znc.in/releases/archive/znc-${ZNC_VERSION}.tar.gz" \
     && tar -zxf "znc-${ZNC_VERSION}.tar.gz" \
     && cd "znc-${ZNC_VERSION}" \
@@ -37,6 +39,7 @@ RUN mkdir /src && cd /src && wget "http://znc.in/releases/archive/znc-${ZNC_VERS
     && make install \
     && sh -c "${CLEANCMD}"
 
+COPY docker-entrypoint.sh /entrypoint.sh
 
 USER znc
 
@@ -44,4 +47,6 @@ VOLUME /znc-data
 
 EXPOSE 6667
 
-ENTRYPOINT ["/usr/local/bin/znc", "-f", "-d", "/znc-data"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD [""]
+# ENTRYPOINT ["/usr/local/bin/znc", "-f", "-d", "/znc-data"]
