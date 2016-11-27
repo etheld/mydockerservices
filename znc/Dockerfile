@@ -29,7 +29,10 @@ RUN apk add --no-cache --virtual build-dependencies \
         gettext-dev \
         boost-dev
 
-RUN apk add --no-cache py-requests
+RUN python3 -m ensurepip && \
+    rm -r /usr/lib/python*/ensurepip && \
+    pip3 install --upgrade pip setuptools requests && \
+    rm -r /root/.cache
 
 RUN mkdir /src && cd /src && wget "http://znc.in/releases/archive/znc-${ZNC_VERSION}.tar.gz" \
     && tar -zxf "znc-${ZNC_VERSION}.tar.gz" \
