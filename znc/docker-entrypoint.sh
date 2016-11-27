@@ -24,4 +24,4 @@ fi
 
 # Start ZNC.
 echo "Starting ZNC..."
-exec sudo -u znc znc --foreground --datadir="$DATADIR" $@
+exec znc --foreground --datadir="$DATADIR" $@
