@@ -48,8 +48,6 @@ USER znc
 
 VOLUME /znc-data
 
-EXPOSE 6667
-
 ENTRYPOINT ["/entrypoint.sh"]
 CMD [""]
 # ENTRYPOINT ["/usr/local/bin/znc", "-f", "-d", "/znc-data"]
