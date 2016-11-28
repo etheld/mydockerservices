@@ -14,9 +14,7 @@ RUN apk add --no-cache --virtual runtime-dependencies \
         boost \
         python3 \
         perl \
-        cyrus-sasl
-
-RUN apk add --no-cache --virtual build-dependencies \
+        cyrus-sasl \
         build-base \
         cmake \
         git \
@@ -27,14 +25,15 @@ RUN apk add --no-cache --virtual build-dependencies \
         python3-dev \
         swig \
         gettext-dev \
-        boost-dev
+        boost-dev \
+        g++ \
+        icu-dev \
+        openssl-dev
 
 RUN python3 -m ensurepip && \
     rm -r /usr/lib/python*/ensurepip && \
     pip3 install --upgrade pip setuptools requests && \
     rm -r /root/.cache
-
-RUN apk add --no-cache g++ icu-dev openssl-dev
 
 RUN mkdir /src && cd /src && wget "http://znc.in/releases/archive/znc-${ZNC_VERSION}.tar.gz" \
     && tar -zxf "znc-${ZNC_VERSION}.tar.gz" \
