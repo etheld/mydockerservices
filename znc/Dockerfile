@@ -1,6 +1,6 @@
 FROM alpine:3.3
 
-RUN adduser -S znc && addgroup -S znc
+RUN addgroup -S znc -g 100 && adduser -S znc -u 1000 -g 100
 
 ENV CONFIGUREFLAGS="--enable-python"
 ENV CLEANCMD="apk del build-dependencies && rm -Rf /src*"
