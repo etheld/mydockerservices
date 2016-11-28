@@ -1,2 +1,1 @@
-![build status](https://travis-ci.org/etheld/mydockerservices.svg?branch=master)
-build Status: [](https://travis-ci.org/etheld/mydockerservices)
+[![Build Status](https://travis-ci.org/etheld/mydockerservices.svg?branch=master)](https://travis-ci.org/etheld/mydockerservices)
