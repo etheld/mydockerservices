@@ -14,7 +14,9 @@ RUN apk add --no-cache --virtual runtime-dependencies \
         boost \
         python3 \
         perl \
-        cyrus-sasl \
+        cyrus-sasl
+
+RUN apk add --no-cache --virtual build-dependencies \
         build-base \
         cmake \
         git \
