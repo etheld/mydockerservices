@@ -21,10 +21,17 @@ git:
 script:
   - docker build -t znc znc/
   - docker build -t mosquitto mosquitto/
+  - docker build -t telegraf telegraf/
 
 after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+  
+  - export REPO=gwelican/telegraf
+  - docker build -t $REPO:$COMMIT telegraf
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO
 
   - export REPO=gwelican/znc
   - docker build -t $REPO:$COMMIT znc
