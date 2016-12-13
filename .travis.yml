@@ -20,12 +20,20 @@ git:
 
 script:
   - docker build -t znc znc/
+  - docker build -t mosquitto mosquitto/
 
 after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-  - export REPO=gwelican/znc
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+
+  - export REPO=gwelican/znc
   - docker build -t $REPO:$COMMIT znc
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO
+
+  - export REPO=gwelican/mosquitto
+  - docker build -t $REPO:$COMMIT mosquitto
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
   - docker push $REPO
