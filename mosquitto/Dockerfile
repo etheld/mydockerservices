@@ -10,4 +10,4 @@ USER 1000
 
 EXPOSE 1883
 
-ENTRYPOINT ["mosquitto -c mosquitto.conf"]
+ENTRYPOINT ["mosquitto", "-c", "/work/mosquitto.conf"]
