@@ -1,5 +1,7 @@
 FROM alpine:latest
 
+MAINTAINER Gwelican <superfly@gwelican.eu>
+
 RUN apk add --update mosquitto mosquitto-clients && \
 mkdir /work && chown 1000 /work
 

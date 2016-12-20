@@ -1,0 +1,44 @@
+{{ range $host, $containers := groupByMulti $ "Env.VIRTUAL_HOST" "," }}
+{{ $host }} {
+  {{ range $index, $value := $containers }}
+    {{ $basicauth := $value.Env.BASIC_AUTH }}
+    {{ if $basicauth }}
+        basicauth {{ $basicauth }}
+    {{ end }}
+    {{ $addrLen := len $value.Addresses }}
+    {{ $network := index $value.Networks 0 }}
+    {{ if eq $addrLen 1 }}
+      {{ with $address := index $value.Addresses 0 }}
+      proxy / {{ $network.IP }}:{{ $address.Port }} {
+        header_upstream Host {host}
+        header_upstream X-Real-IP {remote}
+        header_upstream X-Forwarded-For {remote}
+        header_upstream X-Forwarded-Proto {scheme}
+      }
+      {{ end }}
+    {{ else if $value.Env.VIRTUAL_PORT }}
+      {{ range $i, $address := $value.Addresses }}
+        {{ if eq $address.Port $value.Env.VIRTUAL_PORT }}
+        proxy / {{ $network.IP }}:{{ $address.Port }} {
+          header_upstream Host {host}
+          header_upstream X-Real-IP {remote}
+          header_upstream X-Forwarded-For {remote}
+          header_upstream X-Forwarded-Proto {scheme}
+        }
+        {{ end }}
+      {{ end }}
+    {{ else }}
+      {{ range $i, $address := $value.Addresses }}
+        {{ if eq $address.Port "80" }}
+        proxy / {{ $network.IP }}:{{ $address.Port }} {
+          header_upstream Host {host}
+          header_upstream X-Real-IP {remote}
+          header_upstream X-Forwarded-For {remote}
+          header_upstream X-Forwarded-Proto {scheme}
+        }
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+}
+{{ end }}

@@ -1,4 +1,5 @@
 FROM alpine:3.3
+MAINTAINER Gwelican <superfly@gwelican.eu>
 
 RUN adduser -S znc -u 1000 -G users
 

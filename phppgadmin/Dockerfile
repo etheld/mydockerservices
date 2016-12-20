@@ -1,4 +1,5 @@
 FROM alpine
+MAINTAINER Gwelican <superfly@gwelican.eu>
 
 RUN apk --no-cache add lighttpd php5-common php5-iconv php5-json php5-gd php5-curl php5-xml php5-pgsql php5-imap php5-cgi fcgi wget unzip
 
