@@ -25,6 +25,7 @@ script:
   - docker build -t telegraf telegraf/
   - docker build -t php-pdo php-pdo/
   - docker build -t caddy-proxy caddy-proxy/
+  - docker build -t ruby-runner rubby-runner/
 
 after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
@@ -62,6 +63,12 @@ after_success:
 
   - export REPO=gwelican/mosquitto
   - docker build -t $REPO:$COMMIT mosquitto
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO
+
+  - export REPO=gwelican/ruby-runner
+  - docker build -t $REPO:$COMMIT ruby-runner
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
   - docker push $REPO
