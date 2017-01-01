@@ -25,7 +25,7 @@ script:
   - docker build -t telegraf telegraf/
   - docker build -t php-pdo php-pdo/
   - docker build -t caddy-proxy caddy-proxy/
-  - docker build -t ruby-runner rubby-runner/
+  - docker build -t ruby-runner ruby-runner/
 
 after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
