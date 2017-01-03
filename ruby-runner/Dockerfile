@@ -12,4 +12,6 @@ RUN bundle config build.nokogiri --use-system-libraries
 COPY Gemfile /ambient/
 RUN bundle install
 
+RUN adduser -D -u 1000 rubyrunner
+
 RUN apk del build-dependencies
