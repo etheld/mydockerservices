@@ -35,40 +35,33 @@ after_success:
   - docker build -t $REPO:$COMMIT caddy-proxy
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-  - docker push $REPO
 
   - export REPO=gwelican/phppgadmin
   - docker build -t $REPO:$COMMIT phppgadmin
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-  - docker push $REPO
 
   - export REPO=gwelican/php-pdo
   - docker build -t $REPO:$COMMIT php-pdo
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-  - docker push $REPO
 
   - export REPO=gwelican/telegraf
   - docker build -t $REPO:$COMMIT telegraf
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-  - docker push $REPO
 
   - export REPO=gwelican/znc
   - docker build -t $REPO:$COMMIT znc
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-  - docker push $REPO
 
   - export REPO=gwelican/mosquitto
   - docker build -t $REPO:$COMMIT mosquitto
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-  - docker push $REPO
 
   - export REPO=gwelican/ruby-runner
   - docker build -t $REPO:$COMMIT ruby-runner
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-  - docker push $REPO
