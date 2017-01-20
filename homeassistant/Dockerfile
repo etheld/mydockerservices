@@ -33,6 +33,13 @@ RUN pip3 install \
 
 RUN pip3 install homeassistant==0.36.1
 
+
+COPY upnp.patch /root/
+
+WORKDIR /usr/local/lib/python3.4/dist-packages/homeassistant/components/emulated_hue/
+
+RUN patch < /root/upnp.patch
+
 WORKDIR /data
 
 CMD ["hass", "--config", "/data/.homeassistant"]

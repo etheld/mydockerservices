@@ -1,0 +1,13 @@
+diff --git a/upnp.py b/upnp2.py
+index de3be34..0df8737 100644
+--- a/upnp.py
++++ b/upnp2.py
+@@ -148,7 +148,7 @@ USN: uuid:Socket-1_0-221438K0100073::urn:schemas-upnp-org:device:basic:1
+                 _LOGGER.error("UPNP Responder socket exception occured: %s",
+                               ex.__str__)
+ 
+-            if "M-SEARCH" in data.decode('utf-8'):
++            if "M-SEARCH" in data.decode('utf-8','ignore'):
+                 # SSDP M-SEARCH method received, respond to it with our info
+                 resp_socket = socket.socket(
+                     socket.AF_INET, socket.SOCK_DGRAM)
