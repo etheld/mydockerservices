@@ -58,4 +58,6 @@ CMD ["hass", "--config", "/data/.homeassistant"]
 
 RUN [ "cross-build-end" ]
 
+USER 1000
+
 EXPOSE 8123
