@@ -29,9 +29,21 @@ RUN pip3 install \
 	  python-nmap \
 	  fritzconnection \
 	  psycopg2 \
-	  sqlalchemy
+    sqlalchemy \
+    aiohttp_cors \
+    paho-mqtt \
+    libnacl \
+    xmltodict \
+    gTTS-token \
+    orvibo \
+    distro \
+    fuzzywuzzy \
+    jsonrpc-async \
+    astral
 
-RUN pip3 install homeassistant==0.36.1
+
+
+RUN pip3 install homeassistant
 
 
 COPY upnp.patch /root/
