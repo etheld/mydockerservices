@@ -19,49 +19,14 @@ git:
   depth: 150
 
 script:
-  - docker build -t znc znc/
-  - docker build -t phppgadmin phppgadmin/
-  - docker build -t mosquitto mosquitto/
-  - docker build -t telegraf telegraf/
-  - docker build -t php-pdo php-pdo/
-  - docker build -t caddy-proxy caddy-proxy/
-  - docker build -t ruby-runner ruby-runner/
+  - docker run --rm --privileged multiarch/qemu-user-static:register --reset
+  - docker build -t homebridge homebridge/
 
 after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
 
-  - export REPO=gwelican/caddy-proxy
-  - docker build -t $REPO:$COMMIT caddy-proxy
-  - docker tag $REPO:$COMMIT $REPO:$TAG
-  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-
-  - export REPO=gwelican/phppgadmin
-  - docker build -t $REPO:$COMMIT phppgadmin
-  - docker tag $REPO:$COMMIT $REPO:$TAG
-  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-
-  - export REPO=gwelican/php-pdo
-  - docker build -t $REPO:$COMMIT php-pdo
-  - docker tag $REPO:$COMMIT $REPO:$TAG
-  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-
-  - export REPO=gwelican/telegraf
-  - docker build -t $REPO:$COMMIT telegraf
-  - docker tag $REPO:$COMMIT $REPO:$TAG
-  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-
-  - export REPO=gwelican/znc
-  - docker build -t $REPO:$COMMIT znc
-  - docker tag $REPO:$COMMIT $REPO:$TAG
-  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-
-  - export REPO=gwelican/mosquitto
-  - docker build -t $REPO:$COMMIT mosquitto
-  - docker tag $REPO:$COMMIT $REPO:$TAG
-  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-
-  - export REPO=gwelican/ruby-runner
-  - docker build -t $REPO:$COMMIT ruby-runner
+  - export REPO=gwelican/homebridge
+  - docker build -t $REPO:$COMMIT homebridge
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
