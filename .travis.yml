@@ -30,3 +30,4 @@ after_success:
   - docker build -t $REPO:$COMMIT homebridge
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO
