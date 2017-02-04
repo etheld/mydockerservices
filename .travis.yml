@@ -21,6 +21,7 @@ git:
 script:
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
   - docker build -t homebridge homebridge/
+  - docker build -t homeassistant homebassistant/
 
 after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
@@ -28,6 +29,12 @@ after_success:
 
   - export REPO=gwelican/homebridge
   - docker build -t $REPO:$COMMIT homebridge
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO
+  
+  - export REPO=gwelican/homeassistant
+  - docker build -t $REPO:$COMMIT homeassistant
   - docker tag $REPO:$COMMIT $REPO:$TAG
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
   - docker push $REPO

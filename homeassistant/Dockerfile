@@ -1,6 +1,4 @@
-FROM resin/armv7hf-debian-qemu:latest
-
-RUN [ "cross-build-start" ]
+FROM resin/rpi-raspbian:latest
 
 VOLUME /data
 
@@ -55,8 +53,6 @@ RUN patch < /root/upnp.patch
 WORKDIR /data
 
 CMD ["hass", "--config", "/data/.homeassistant"]
-
-RUN [ "cross-build-end" ]
 
 USER 1000
 
