@@ -35,6 +35,7 @@ RUN pip3 install \
     gTTS-token \
     orvibo \
     distro \
+    colorlog \
     fuzzywuzzy \
     jsonrpc-async \
     astral
