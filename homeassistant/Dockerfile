@@ -2,6 +2,8 @@ FROM resin/rpi-raspbian:latest
 
 VOLUME /data
 
+COPY upnp.patch /root/
+
 # Install yaml from apt, to also install the cpp lib.
 RUN apt-get update && apt-get install -y \
     python3-dev \
@@ -38,17 +40,11 @@ RUN pip3 install \
     colorlog \
     fuzzywuzzy \
     jsonrpc-async \
-    astral
+    astral && \
+    pip3 install homeassistant
 
-
-
-RUN pip3 install homeassistant
-
-
-COPY upnp.patch /root/
 
 WORKDIR /usr/local/lib/python3.4/dist-packages/homeassistant/components/emulated_hue/
-
 RUN patch < /root/upnp.patch
 
 WORKDIR /data

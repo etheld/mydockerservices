@@ -15,9 +15,8 @@ RUN apk add --no-cache --virtual runtime-dependencies \
         boost \
         python3 \
         perl \
-        cyrus-sasl
-
-RUN apk add --no-cache --virtual build-dependencies \
+        cyrus-sasl && \
+    apk add --no-cache --virtual build-dependencies \
         build-base \
         cmake \
         git \
@@ -36,9 +35,8 @@ RUN apk add --no-cache --virtual build-dependencies \
 RUN python3 -m ensurepip && \
     rm -r /usr/lib/python*/ensurepip && \
     pip3 install --upgrade pip setuptools requests && \
-    rm -r /root/.cache
-
-RUN mkdir /src && cd /src && wget "http://znc.in/releases/archive/znc-${ZNC_VERSION}.tar.gz" \
+    rm -r /root/.cache && \
+    mkdir /src && cd /src && wget "http://znc.in/releases/archive/znc-${ZNC_VERSION}.tar.gz" \
     && tar -zxf "znc-${ZNC_VERSION}.tar.gz" \
     && cd "znc-${ZNC_VERSION}" \
     && ./configure ${CONFIGUREFLAGS} \
@@ -53,5 +51,4 @@ USER znc
 VOLUME /znc-data
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD [""]
 # ENTRYPOINT ["/usr/local/bin/znc", "-f", "-d", "/znc-data"]
