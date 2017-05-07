@@ -2,12 +2,12 @@ FROM nimmis/alpine:3.4
 MAINTAINER Gwelican <superfly@gwelican.eu>
 
 RUN apk update && apk upgrade && \
-    apk add curl && \
+    apk add curl unzip && \
     rm -rf /var/cache/apk/*
 
 RUN mkdir -p /tmp/caddy \
- && curl -sL -o /tmp/caddy/caddy_linux_amd64.tar.gz "https://caddyserver.com/download/build?os=linux&arch=amd64&features=cors" \
- && tar -zxf /tmp/caddy/caddy_linux_amd64.tar.gz -C /tmp/caddy \
+ && curl -sL -o /tmp/caddy/caddy_linux_amd64.tar.gz "https://caddyserver.com/download/darwin/amd64?plugins=http.cors" \
+ && unzip /tmp/caddy/caddy_linux_amd64.tar.gz -d /tmp/caddy \
  && mv /tmp/caddy/caddy /usr/bin/ \
  && chmod +x /usr/bin/caddy \
  && rm -rf /tmp/caddy
