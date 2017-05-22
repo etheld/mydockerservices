@@ -6,8 +6,8 @@ RUN apk update && apk upgrade && \
     rm -rf /var/cache/apk/*
 
 RUN mkdir -p /tmp/caddy \
- && curl -sL -o /tmp/caddy/caddy_linux_amd64.tar.gz "https://caddyserver.com/download/darwin/amd64?plugins=http.cors" \
- && unzip /tmp/caddy/caddy_linux_amd64.tar.gz -d /tmp/caddy \
+ && curl -sL -o /tmp/caddy/caddy_linux_amd64.tar.gz "https://caddyserver.com/download/linux/amd64?plugins=http.cors" \
+ && tar -zxf /tmp/caddy/caddy_linux_amd64.tar.gz -C /tmp/caddy \
  && mv /tmp/caddy/caddy /usr/bin/ \
  && chmod +x /usr/bin/caddy \
  && rm -rf /tmp/caddy
