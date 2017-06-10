@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER dreamcat4 <dreamcat4@gmail.com>
+LABEL MAINTAINER gwelican <superfly@gwelican.eu>
 
 ENV jackett_version="0.7.1483"
 
