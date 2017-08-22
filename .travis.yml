@@ -23,11 +23,19 @@ script:
   - docker build -t homebridge homebridge/
   - docker build -t homeassistant homeassistant/
   - docker build -t motion-detector motion-detector/
+  - docker build -t flood flood/
 
 after_success:
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
 
+  - export REPO=gwelican/flood
+  - docker build -t $REPO:$COMMIT flood
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO
+
+  - export REPO=gwelican/homeassistant
   - export REPO=gwelican/homebridge
   - docker build -t $REPO:$COMMIT homebridge
   - docker tag $REPO:$COMMIT $REPO:$TAG
