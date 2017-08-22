@@ -35,7 +35,6 @@ after_success:
   - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
   - docker push $REPO
 
-  - export REPO=gwelican/homeassistant
   - export REPO=gwelican/homebridge
   - docker build -t $REPO:$COMMIT homebridge
   - docker tag $REPO:$COMMIT $REPO:$TAG
