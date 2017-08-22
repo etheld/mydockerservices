@@ -8,7 +8,7 @@ RUN mkdir -p /app/flood && \
 
 ADD config.js /app/flood/
 
-ENTRYPOINT ["/usr/bin/npm", "start"]
+ENTRYPOINT ["/usr/local/bin/npm", "start"]
 
 EXPOSE 3000
 VOLUME ["/data"]
