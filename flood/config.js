@@ -12,7 +12,7 @@ const CONFIG = {
     socket: process.env.RTORRENT_SOCK == 'true',
     socketPath: '/data/rtorrent.sock'
   },
-  ssl: process.env.FLOOD_ENABLE_SSL == 'false',
+  ssl: process.env.FLOOD_ENABLE_SSL == 'true',
   sslKey: '/data/flood_ssl.key',
   sslCert: '/data/flood_ssl.cert'
 };
