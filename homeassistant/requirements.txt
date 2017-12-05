@@ -1,0 +1,206 @@
+# Home Assistant core
+requests==2.18.4
+pyyaml>=3.11,<4
+pytz>=2017.02
+pip>=8.0.3
+jinja2>=2.9.6
+voluptuous==0.10.5
+typing>=3,<4
+aiohttp==2.3.5
+yarl==0.15.0
+async_timeout==2.0.0
+chardet==3.0.4
+astral==1.4
+certifi>=2017.4.17
+
+
+# homeassistant.components.arduino
+PyMata==2.14
+
+# homeassistant.components.device_tracker.automatic
+aioautomatic==0.6.4
+
+
+# homeassistant.components.emulated_hue
+# homeassistant.components.http
+aiohttp_cors==0.5.3
+
+# homeassistant.components.light.lifx
+aiolifx==0.6.0
+
+# homeassistant.components.light.lifx
+aiolifx_effects==0.1.2
+
+# homeassistant.components.blink
+blinkpy==0.6.0
+
+# homeassistant.components.notify.aws_lambda
+# homeassistant.components.notify.aws_sns
+# homeassistant.components.notify.aws_sqs
+# homeassistant.components.tts.amazon_polly
+boto3==1.4.7
+
+# homeassistant.components.sensor.buienradar
+# homeassistant.components.weather.buienradar
+buienradar==0.9
+
+# homeassistant.components.sensor.metoffice
+# homeassistant.components.weather.metoffice
+datapoint==0.4.3
+
+# homeassistant.components.updater
+distro==1.1.0
+
+# homeassistant.components.tts.google
+gTTS-token==1.1.1
+
+# homeassistant.components.device_tracker.bluetooth_le_tracker
+# gattlib==0.20150805
+
+# homeassistant.components.google
+google-api-python-client==1.6.4
+
+# homeassistant.components.sensor.google_travel_time
+googlemaps==2.5.1
+
+
+# homeassistant.components.mqtt.server
+hbmqtt==0.9.1
+
+# homeassistant.components.binary_sensor.workday
+holidays==0.8.1
+
+# homeassistant.components.media_player.kodi
+# homeassistant.components.notify.kodi
+jsonrpc-async==0.6
+
+# homeassistant.components.media_player.kodi
+jsonrpc-websocket==0.5
+
+# homeassistant.components.device_tracker.owntracks
+# homeassistant.components.device_tracker.owntracks_http
+libnacl==1.6.1
+
+# homeassistant.components.light.lifx_legacy
+liffylights==0.9.4
+
+
+# homeassistant.components.tts
+mutagen==1.39
+
+
+# homeassistant.components.discovery
+netdisco==1.2.3
+
+# homeassistant.components.google
+oauth2client==4.0.0
+
+# homeassistant.components.mqtt
+# homeassistant.components.shiftr
+paho-mqtt==1.3.1
+
+
+# homeassistant.components.device_tracker.aruba
+# homeassistant.components.device_tracker.asuswrt
+# homeassistant.components.device_tracker.cisco_ios
+# homeassistant.components.device_tracker.unifi_direct
+# homeassistant.components.media_player.pandora
+pexpect==4.0.1
+
+# homeassistant.components.light.hue
+phue==1.0
+
+# homeassistant.components.media_player.plex
+# homeassistant.components.sensor.plex
+plexapi==3.0.3
+
+# homeassistant.components.prometheus
+prometheus_client==0.0.21
+
+# homeassistant.components.rfxtrx
+pyRFXtrx==0.20.1
+
+
+# homeassistant.components.device_tracker.bluetooth_tracker
+# pybluez==0.22
+
+
+# homeassistant.components.ifttt
+pyfttt==0.3
+
+# homeassistant.components.media_player.webostv
+# homeassistant.components.notify.webostv
+pylgtv==0.1.7
+
+# homeassistant.components.sensor.openweathermap
+# homeassistant.components.weather.openweathermap
+pyowm==2.7.1
+
+
+# homeassistant.components.device_tracker.snmp
+# homeassistant.components.sensor.snmp
+# homeassistant.components.switch.snmp
+pysnmp==4.4.2
+
+
+
+# homeassistant.components.nest
+python-nest==3.1.0
+
+# homeassistant.components.device_tracker.nmap_tracker
+python-nmap==0.6.1
+
+# homeassistant.components.media_player.roku
+python-roku==3.1.3
+
+# homeassistant.components.sensor.synologydsm
+python-synology==0.1.0
+
+# homeassistant.components.sensor.twitch
+python-twitch==1.3.0
+
+# homeassistant.components.wemo
+pywemo==0.4.20
+
+
+# homeassistant.components.climate.radiotherm
+radiotherm==1.3
+
+# homeassistant.components.raincloud
+raincloudy==0.0.4
+
+# homeassistant.components.notify.slack
+slacker==0.9.60
+
+
+# homeassistant.components.sensor.speedtest
+speedtest-cli==1.0.7
+
+# homeassistant.components.wake_on_lan
+# homeassistant.components.media_player.panasonic_viera
+# homeassistant.components.media_player.samsungtv
+# homeassistant.components.media_player.webostv
+# homeassistant.components.switch.wake_on_lan
+wakeonlan==0.2.2
+
+# homeassistant.components.cloud
+warrant==0.5.0
+
+# homeassistant.components.spc
+# homeassistant.components.media_player.webostv
+websockets==3.2
+
+# homeassistant.components.sensor.yweather
+# homeassistant.components.weather.yweather
+yahooweather==0.9
+
+# homeassistant.components.media_player.bluesound
+# homeassistant.components.sensor.swiss_hydrological_data
+# homeassistant.components.sensor.ted5000
+# homeassistant.components.sensor.yr
+xmltodict==0.11.0
+
+# homeassistant.components.media_extractor
+youtube_dl==2017.11.26
+
+
