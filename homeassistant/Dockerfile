@@ -6,7 +6,7 @@ MAINTAINER Gwelican <superfly@gwelican.eu>
 ADD https://raw.githubusercontent.com/home-assistant/home-assistant/dev/requirements_all.txt /tmp/requirements.txt
 
 RUN apk add --no-cache python3 openssl libjpeg py3-pillow && \
-    apk add --no-cache --virtual build-dependencies gcc g++ python3-dev libffi-dev openssl-dev 
+    apk add --no-cache --virtual build-dependencies gcc g++ python3-dev libffi-dev openssl-dev linux-headers libxml2-dev
 RUN    pip3 install --no-cache-dir -r /tmp/requirements.txt 
 RUN    pip3 install --no-cache-dir mysqlclient psycopg2 uvloop cchardet cython homeassistant && \
     apk del --purge build-dependencies
