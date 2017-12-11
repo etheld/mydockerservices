@@ -1,0 +1,18 @@
+[submodule "homeassistant"]
+	path = homeassistant
+	url = https://github.com/etheld/docker-homeassistant
+[submodule "znc"]
+	path = znc
+	url = https://github.com/etheld/docker-znc
+[submodule "ruby-runner"]
+	path = ruby-runner
+	url = https://github.com/etheld/docker-ruby-runner
+[submodule "phppgadmin"]
+	path = phppgadmin
+	url = https://github.com/etheld/docker-phppgadmin
+[submodule "mosquitto"]
+	path = mosquitto
+	url = https://github.com/etheld/docker-mosquitto
+[submodule "caddy-proxy"]
+	path = caddy-proxy
+	url = https://github.com/etheld/docker-caddy-proxy
